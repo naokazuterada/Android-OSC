@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+    
+    <EditText android:layout_height="wrap_content" android:id="@+id/host_ip" android:layout_width="fill_parent" android:text="10.0.1.3"/>
+    <EditText android:layout_height="wrap_content" android:id="@+id/host_port" android:layout_width="fill_parent" android:text="7400"/>
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/connect_btn" android:text="Connect" />
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/send_btn" android:text="Send Message" />
+</LinearLayout>
