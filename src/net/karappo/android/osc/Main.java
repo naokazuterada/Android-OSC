@@ -3,11 +3,13 @@ package net.karappo.android.osc;
 import java.io.IOException;
 import java.net.InetAddress;
 
+import net.karappo.android.osc.view.AnimLayout;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -16,25 +18,31 @@ import android.view.View.OnKeyListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
 
 import com.illposed.osc.OSCMessage;
 import com.illposed.osc.OSCPortOut;
 
 public class Main extends Activity implements OnClickListener
 {
-	private final String TAG = "OSCMain";
+	private final String TAG = "OSC";
 	
-	public static final String PREFS_NAME = "AndroidomePrefsFile";
+	public static final String PREFS_NAME = "KarappoOSC";
 	public static final String PKEY_HOST_IP = "lastHostIP";
 	public static final String PKEY_HOST_PORT = "lastHostPort";
 	
 	private EditText ET_hostip;
 	private EditText ET_hostport;
+	private AnimLayout spring;
 	
 	private OSCPortOut oscPortOut;
  	private String deviceIPAddress = " ";
  	private Host host = new Host("10.0.1.3", 7400);
+ 	private String root = "/karappoosc";
 	
+ 	
+ 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,6 +95,31 @@ public class Main extends Activity implements OnClickListener
 		((Button) findViewById(R.id.connect_btn)).setOnClickListener(this);
 		
 		((Button) findViewById(R.id.send_btn)).setOnClickListener(this);
+		
+		
+		spring = (AnimLayout) findViewById(R.id.spring);
+		spring.start();
+		
+		((SeekBar) findViewById(R.id.seekSpring)).setOnSeekBarChangeListener(new OnSeekBarChangeListener()
+		{
+			@Override
+			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromTouch)
+			{
+				spring.setSpring(progress);
+			}
+			@Override public void onStartTrackingTouch(SeekBar seekBar){}
+			@Override public void onStopTrackingTouch(SeekBar seekBar){}
+		});
+		((SeekBar) findViewById(R.id.seekFriction)).setOnSeekBarChangeListener(new OnSeekBarChangeListener()
+		{
+			@Override
+			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromTouch)
+			{
+				spring.setFriction(progress);
+			}
+			@Override public void onStartTrackingTouch(SeekBar seekBar){}
+			@Override public void onStopTrackingTouch(SeekBar seekBar){}
+		});
     }
 	
 	private Host getHost()
@@ -134,7 +167,7 @@ public class Main extends Activity implements OnClickListener
 		}
 
 		Object[] oscArgs = {deviceIPAddress};
-		OSCMessage oscMsgIP = new OSCMessage("/androidome/setup", oscArgs);
+		OSCMessage oscMsgIP = new OSCMessage(root+"/setup", oscArgs);
 
 		sendOSCMessage(oscMsgIP);
 	}
@@ -167,10 +200,18 @@ public class Main extends Activity implements OnClickListener
 		case R.id.send_btn:
 			Log.d(TAG,"Send Message:");
 			Object[] oscArgs = {1, 0};
-			OSCMessage oscMsg = new OSCMessage("/tilt", oscArgs);
+			OSCMessage oscMsg = new OSCMessage(root+"/tilt", oscArgs);
 			sendOSCMessage(oscMsg);
 			break;
 		}
+	}
+	
+	
+	@Override
+	protected void onDestroy() 
+	{
+		super.onDestroy();
+		spring.stop();
 	}
 }
 

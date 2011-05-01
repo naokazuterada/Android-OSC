@@ -9,15 +9,57 @@ package net.karappo.android.osc;
 
 public final class R {
     public static final class attr {
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int ballFillColor=0x7f010002;
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int ballLineColor=0x7f010003;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int ballLineWidth=0x7f010001;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int ballWidth=0x7f010000;
     }
     public static final class drawable {
         public static final int icon=0x7f020000;
     }
     public static final class id {
-        public static final int connect_btn=0x7f050002;
-        public static final int host_ip=0x7f050000;
-        public static final int host_port=0x7f050001;
-        public static final int send_btn=0x7f050003;
+        public static final int connect_btn=0x7f050003;
+        public static final int host_ip=0x7f050001;
+        public static final int host_port=0x7f050002;
+        public static final int linearLayout1=0x7f050000;
+        public static final int seekFriction=0x7f050007;
+        public static final int seekSpring=0x7f050006;
+        public static final int send_btn=0x7f050004;
+        public static final int spring=0x7f050005;
     }
     public static final class layout {
         public static final int main=0x7f030000;
@@ -26,4 +68,87 @@ public final class R {
         public static final int app_name=0x7f040001;
         public static final int hello=0x7f040000;
     }
+    public static final class styleable {
+        /**  name : custom view class name 
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #AnimLayout_ballFillColor net.karappo.android.osc:ballFillColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #AnimLayout_ballLineColor net.karappo.android.osc:ballLineColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #AnimLayout_ballLineWidth net.karappo.android.osc:ballLineWidth}</code></td><td></td></tr>
+           <tr><td><code>{@link #AnimLayout_ballWidth net.karappo.android.osc:ballWidth}</code></td><td></td></tr>
+           </table>
+           @see #AnimLayout_ballFillColor
+           @see #AnimLayout_ballLineColor
+           @see #AnimLayout_ballLineWidth
+           @see #AnimLayout_ballWidth
+         */
+        public static final int[] AnimLayout = {
+            0x7f010000, 0x7f010001, 0x7f010002, 0x7f010003
+        };
+        /**
+          <p>This symbol is the offset where the {@link net.karappo.android.osc.R.attr#ballFillColor}
+          attribute's value can be found in the {@link #AnimLayout} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name android:ballFillColor
+        */
+        public static final int AnimLayout_ballFillColor = 2;
+        /**
+          <p>This symbol is the offset where the {@link net.karappo.android.osc.R.attr#ballLineColor}
+          attribute's value can be found in the {@link #AnimLayout} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name android:ballLineColor
+        */
+        public static final int AnimLayout_ballLineColor = 3;
+        /**
+          <p>This symbol is the offset where the {@link net.karappo.android.osc.R.attr#ballLineWidth}
+          attribute's value can be found in the {@link #AnimLayout} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name android:ballLineWidth
+        */
+        public static final int AnimLayout_ballLineWidth = 1;
+        /**
+          <p>This symbol is the offset where the {@link net.karappo.android.osc.R.attr#ballWidth}
+          attribute's value can be found in the {@link #AnimLayout} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name android:ballWidth
+        */
+        public static final int AnimLayout_ballWidth = 0;
+    };
 }

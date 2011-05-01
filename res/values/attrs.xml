@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- name : custom view class name -->
+	<declare-styleable name="AnimLayout">
+		<attr name="ballWidth" format="dimension" />
+		<attr name="ballLineWidth" format="dimension" />
+		<attr name="ballFillColor" format="color" />
+		<attr name="ballLineColor" format="color" />
+	</declare-styleable>
+</resources>
