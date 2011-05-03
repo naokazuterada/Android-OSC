@@ -49,24 +49,55 @@ containing a value of this type.
         public static final int ballWidth=0x7f010000;
     }
     public static final class drawable {
-        public static final int icon=0x7f020000;
+        public static final int animlayout_bg=0x7f020000;
+        public static final int icon=0x7f020001;
+        public static final int ovalbtn_bg=0x7f020002;
+        public static final int ovalbtn_bg_disabled=0x7f020003;
+        public static final int ovalbtn_bg_normal=0x7f020004;
+        public static final int ovalbtn_bg_pressed=0x7f020005;
+        public static final int seekbar=0x7f020006;
+        public static final int togglebtn=0x7f020007;
+        public static final int togglebtn_bg=0x7f020008;
+        public static final int togglebtn_bg_normal=0x7f020009;
+        public static final int togglebtn_bg_pressed=0x7f02000a;
+        public static final int togglebtn_off=0x7f02000b;
+        public static final int togglebtn_on=0x7f02000c;
+        public static final int togglebtn_onoff=0x7f02000d;
     }
     public static final class id {
-        public static final int connect_btn=0x7f050003;
-        public static final int host_ip=0x7f050001;
-        public static final int host_port=0x7f050002;
-        public static final int linearLayout1=0x7f050000;
-        public static final int seekFriction=0x7f050007;
-        public static final int seekSpring=0x7f050006;
-        public static final int send_btn=0x7f050004;
-        public static final int spring=0x7f050005;
+        public static final int TableRow01=0x7f06000c;
+        public static final int anim_layout=0x7f06000a;
+        public static final int connect_btn=0x7f060003;
+        public static final int enableBtn=0x7f060009;
+        public static final int frictionBtn1=0x7f060013;
+        public static final int frictionBtn2=0x7f060015;
+        public static final int frictionSeek=0x7f060014;
+        public static final int frictionTV=0x7f060012;
+        public static final int host_ip=0x7f060001;
+        public static final int host_port=0x7f060002;
+        public static final int linearLayout1=0x7f060000;
+        public static final int send_btn=0x7f060004;
+        public static final int springBtn1=0x7f06000e;
+        public static final int springBtn2=0x7f060010;
+        public static final int springSeek=0x7f06000f;
+        public static final int springTV=0x7f06000d;
+        public static final int tableLayout1=0x7f06000b;
+        public static final int tableRow1=0x7f060011;
+        public static final int unit1=0x7f060005;
+        public static final int unit2=0x7f060006;
+        public static final int unit3=0x7f060007;
+        public static final int unit4=0x7f060008;
     }
     public static final class layout {
         public static final int main=0x7f030000;
+        public static final int spring_unit=0x7f030001;
     }
     public static final class string {
         public static final int app_name=0x7f040001;
         public static final int hello=0x7f040000;
+    }
+    public static final class style {
+        public static final int CircleButton=0x7f050000;
     }
     public static final class styleable {
         /**  name : custom view class name 

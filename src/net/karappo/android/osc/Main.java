@@ -1,30 +1,32 @@
 package net.karappo.android.osc;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.net.InetAddress;
+import java.util.List;
 
 import net.karappo.android.osc.view.AnimLayout;
+import net.karappo.android.osc.view.SpringUnit;
+import net.karappo.android.osc.view.AnimLayout.OnSpringProgressChangedListener;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnKeyListener;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
 
 import com.illposed.osc.OSCMessage;
 import com.illposed.osc.OSCPortOut;
 
-public class Main extends Activity implements OnClickListener
+public class Main extends Activity implements OnClickListener,OnSpringProgressChangedListener
 {
 	private final String TAG = "OSC";
 	
@@ -34,18 +36,22 @@ public class Main extends Activity implements OnClickListener
 	
 	private EditText ET_hostip;
 	private EditText ET_hostport;
-	private AnimLayout spring;
+	private SpringUnit springUnit;
 	
 	private OSCPortOut oscPortOut;
  	private String deviceIPAddress = " ";
  	private Host host = new Host("10.0.1.3", 7400);
  	private String root = "/karappoosc";
 	
- 	
+ 	private AnimLayout unit1;
+ 	private AnimLayout unit2;
+ 	private AnimLayout unit3;
+ 	private AnimLayout unit4;
  	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.main);
         
         // retrieve preferences
@@ -96,30 +102,10 @@ public class Main extends Activity implements OnClickListener
 		
 		((Button) findViewById(R.id.send_btn)).setOnClickListener(this);
 		
-		
-		spring = (AnimLayout) findViewById(R.id.spring);
-		spring.start();
-		
-		((SeekBar) findViewById(R.id.seekSpring)).setOnSeekBarChangeListener(new OnSeekBarChangeListener()
-		{
-			@Override
-			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromTouch)
-			{
-				spring.setSpring(progress);
-			}
-			@Override public void onStartTrackingTouch(SeekBar seekBar){}
-			@Override public void onStopTrackingTouch(SeekBar seekBar){}
-		});
-		((SeekBar) findViewById(R.id.seekFriction)).setOnSeekBarChangeListener(new OnSeekBarChangeListener()
-		{
-			@Override
-			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromTouch)
-			{
-				spring.setFriction(progress);
-			}
-			@Override public void onStartTrackingTouch(SeekBar seekBar){}
-			@Override public void onStopTrackingTouch(SeekBar seekBar){}
-		});
+		unit1 = ((SpringUnit) findViewById(R.id.unit1)).init(this,1);
+		unit2 = ((SpringUnit) findViewById(R.id.unit2)).init(this,2);
+		unit3 = ((SpringUnit) findViewById(R.id.unit3)).init(this,3);
+		unit4 = ((SpringUnit) findViewById(R.id.unit4)).init(this,4);
     }
 	
 	private Host getHost()
@@ -200,18 +186,29 @@ public class Main extends Activity implements OnClickListener
 		case R.id.send_btn:
 			Log.d(TAG,"Send Message:");
 			Object[] oscArgs = {1, 0};
-			OSCMessage oscMsg = new OSCMessage(root+"/tilt", oscArgs);
+			OSCMessage oscMsg = new OSCMessage(root+"/test", oscArgs);
 			sendOSCMessage(oscMsg);
 			break;
 		}
 	}
 	
-	
 	@Override
 	protected void onDestroy() 
 	{
 		super.onDestroy();
-		spring.stop();
+		unit1.stop();
+		unit2.stop();
+		unit3.stop();
+		unit4.stop();
+	}
+
+	// ƒoƒl‚Ì’l‚ª•Ï‚í‚Á‚½Žž
+	@Override
+	public void onChanged(int id, float value) 
+	{
+		Object[] oscArgs = {value};
+		OSCMessage oscMsg = new OSCMessage(root+"/spring/"+id, oscArgs);
+		sendOSCMessage(oscMsg);
 	}
 }
 

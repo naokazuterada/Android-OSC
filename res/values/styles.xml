@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CircleButton" parent="@android:style/Widget.ImageButton">
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:width">50px</item>
+        <item name="android:height">50px</item>
+        <item name="android:background">@drawable/ovalbtn_bg</item>
+    </style>
+</resources>

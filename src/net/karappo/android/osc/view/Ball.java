@@ -2,14 +2,8 @@ package net.karappo.android.osc.view;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
-import android.graphics.Rect;
-import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.GradientDrawable.Orientation;
-import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 
 public class Ball extends View implements AnimView
@@ -70,11 +64,17 @@ public class Ball extends View implements AnimView
         canvas.drawCircle(inner_radius, inner_radius, inner_radius, paint);
     }
 	
-	public void setCenter(Point point)
+	public void setPosition(Point point)
 	{
 		center = point;
 	}
-	public Point getCenter()
+	public void init(Point center)
+	{
+		start_point = center;
+		vx = vy = 0;
+		setPosition(start_point);
+	}
+	public Point getPosition()
 	{
 		return center;
 	}
