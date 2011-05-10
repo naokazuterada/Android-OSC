@@ -6,13 +6,19 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#222222">
-    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="5px" android:layout_marginRight="5px" android:layout_marginTop="5px" android:id="@+id/configDisp">
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="192.168.1.2:7400" android:id="@+id/hostTV" android:textSize="30dip" android:background="#000000" android:padding="20px" android:textColor="#0054BF"/>
-        <TextView android:background="#000000" android:padding="20px" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="30dip" android:text="TEST" android:layout_marginLeft="5px" android:id="@+id/testTV" android:textColor="#0054BF"></TextView>
-        <TextView android:layout_marginLeft="5px" android:id="@+id/TextView01" android:textSize="15dip" android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="right|center_vertical" android:padding="20px" android:text="Alt_OSC : spring" android:background="#000000" android:textColor="#666666"></TextView>
-    </LinearLayout>
-    <net.karappo.android.osc.view.SpringUnit android:layout_height="wrap_content" android:layout_width="fill_parent" android:id="@+id/unit1" android:layout_marginLeft="5px" android:layout_marginTop="5px" android:layout_marginRight="5px" android:layout_marginBottom="0px"></net.karappo.android.osc.view.SpringUnit>
-    <net.karappo.android.osc.view.SpringUnit android:layout_height="wrap_content" android:layout_width="fill_parent" android:id="@+id/unit2" android:layout_marginLeft="5px" android:layout_marginRight="5px" android:layout_marginTop="5px"/>
-    <net.karappo.android.osc.view.SpringUnit android:layout_height="wrap_content" android:layout_width="fill_parent" android:id="@+id/unit3" android:layout_marginLeft="5px" android:layout_marginRight="5px" android:layout_marginTop="5px"/>
-    <net.karappo.android.osc.view.SpringUnit android:layout_height="wrap_content" android:layout_width="fill_parent" android:id="@+id/unit4" android:layout_marginRight="5px" android:layout_marginLeft="5px" android:layout_marginTop="5px"/>
+    <ScrollView android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/scrollView1">
+        <LinearLayout android:id="@+id/linearLayout1" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical">
+            <LinearLayout android:id="@+id/configDisp" android:layout_width="match_parent" android:layout_marginTop="5px" android:layout_height="wrap_content" android:layout_marginRight="5px" android:layout_marginLeft="5px">
+                <TextView android:background="#000000" android:text="192.168.1.2:7400" android:padding="20px" android:layout_width="wrap_content" android:textColor="#0054BF" android:id="@+id/hostTV" android:layout_height="wrap_content" android:textSize="20dip"></TextView>
+                <TextView android:background="#000000" android:text="TEST" android:padding="20px" android:layout_width="wrap_content" android:textColor="#0054BF" android:layout_marginLeft="5px" android:id="@+id/testTV" android:layout_height="wrap_content" android:textSize="20dip"></TextView>
+                <TextView android:background="#000000" android:padding="20px" android:layout_width="wrap_content" android:textColor="#0054BF" android:layout_marginLeft="5px" android:layout_height="wrap_content" android:textSize="20dip" android:text="+" android:id="@+id/plusTV"></TextView>
+                <TextView android:background="#000000" android:padding="20px" android:layout_width="wrap_content" android:textColor="#0054BF" android:layout_marginLeft="5px" android:layout_height="wrap_content" android:textSize="20dip" android:text="-" android:id="@+id/minusTV"></TextView>
+                <TextView android:background="#000000" android:text="Alt_OSC : spring" android:padding="20px" android:layout_width="match_parent" android:textColor="#666666" android:gravity="right|center_vertical" android:layout_marginLeft="5px" android:id="@+id/TextView01" android:layout_height="match_parent" android:textSize="15dip"></TextView>
+            </LinearLayout>
+        	<net.karappo.android.osc.view.SpringUnit android:layout_height="wrap_content" android:layout_width="fill_parent" android:id="@+id/unit1" android:layout_marginLeft="5px" android:layout_marginTop="5px" android:layout_marginRight="5px" android:layout_marginBottom="0px"></net.karappo.android.osc.view.SpringUnit>
+		    <net.karappo.android.osc.view.SpringUnit android:layout_height="wrap_content" android:layout_width="fill_parent" android:id="@+id/unit2" android:layout_marginLeft="5px" android:layout_marginRight="5px" android:layout_marginTop="5px"/>
+		    <net.karappo.android.osc.view.SpringUnit android:layout_height="wrap_content" android:layout_width="fill_parent" android:id="@+id/unit3" android:layout_marginLeft="5px" android:layout_marginRight="5px" android:layout_marginTop="5px"/>
+		    <net.karappo.android.osc.view.SpringUnit android:layout_height="wrap_content" android:layout_width="fill_parent" android:id="@+id/unit4" android:layout_marginRight="5px" android:layout_marginLeft="5px" android:layout_marginTop="5px"/>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

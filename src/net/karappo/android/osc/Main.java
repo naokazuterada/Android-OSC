@@ -3,6 +3,7 @@ package net.karappo.android.osc;
 import java.io.IOException;
 import java.io.Serializable;
 import java.net.InetAddress;
+import java.util.ArrayList;
 
 import net.karappo.android.osc.view.AnimLayout;
 import net.karappo.android.osc.view.AnimLayout.OnSpringProgressChangedListener;
@@ -53,6 +54,9 @@ public class Main extends Activity implements OnSpringProgressChangedListener
  	// views
  	private TextView hostTV;
  	private TextView testTV;
+ 	private TextView plusTV;
+ 	private TextView minusTV;
+ 	private ArrayList<AnimLayout> units = new ArrayList<AnimLayout>();
  	private AnimLayout unit1;
  	private AnimLayout unit2;
  	private AnimLayout unit3;
@@ -70,6 +74,8 @@ public class Main extends Activity implements OnSpringProgressChangedListener
         
         hostTV = (TextView) findViewById(R.id.hostTV);
         testTV = (TextView) findViewById(R.id.testTV);
+        plusTV = (TextView) findViewById(R.id.plusTV);
+        minusTV = (TextView) findViewById(R.id.minusTV);
 		unit1 = ((SpringUnit) findViewById(R.id.unit1)).init(this,1);
 		unit2 = ((SpringUnit) findViewById(R.id.unit2)).init(this,2);
 		unit3 = ((SpringUnit) findViewById(R.id.unit3)).init(this,3);
@@ -78,6 +84,8 @@ public class Main extends Activity implements OnSpringProgressChangedListener
 		Typeface face = Typeface.createFromAsset(getAssets(), "fonts/DS-DIGI.TTF");
 		hostTV.setTypeface(face);
 		testTV.setTypeface(face);
+		plusTV.setTypeface(face);
+		minusTV.setTypeface(face);
 		
 		hostTV.setOnClickListener(new OnClickListener(){
 			@Override
@@ -93,6 +101,20 @@ public class Main extends Activity implements OnSpringProgressChangedListener
 			public void onClick(View arg0)
 			{
 				pingTestData();
+			}
+		});
+		plusTV.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View arg0)
+			{
+				addUnit();
+			}
+		});
+		minusTV.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View arg0)
+			{
+				removeUnit();
 			}
 		});
 		
@@ -115,6 +137,14 @@ public class Main extends Activity implements OnSpringProgressChangedListener
         }
     }
 	
+	private void addUnit()
+	{
+		
+	}
+	private void removeUnit()
+	{
+		
+	}
 	
 	private void setConfigDisp()
 	{

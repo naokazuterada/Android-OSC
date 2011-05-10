@@ -34,6 +34,9 @@ public class AnimLayout extends FrameLayout implements Runnable
 	private Thread thread = null;
 	private int FPS = 30;
 	
+	private float _spring = 0.2f;
+	private float _friction = 1.0f;
+	
 	private Ball ball;
 	
 	public AnimLayout(Context context, AttributeSet attrs)
@@ -47,9 +50,13 @@ public class AnimLayout extends FrameLayout implements Runnable
 	    int ballLineColor = tArray.getColor(R.styleable.AnimLayout_ballLineColor, 0xffffffff);
 	    int ballFillColor = tArray.getColor(R.styleable.AnimLayout_ballFillColor, 0xffffffff);
 	    
+	    
 	    // ‚¨‚à‚è
 	    ball = new Ball(context, ballWidth, ballLineWidth, ballLineColor, ballFillColor);
 	    addView(ball, new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+	    
+	    setSpring(0);
+	    setFriction(0);
 	}
 	
 	@Override
@@ -65,8 +72,7 @@ public class AnimLayout extends FrameLayout implements Runnable
 	public void setSpring(float val){ _spring = 0.01f+0.4f*val/100; }
 	public void setFriction(float val){ _friction = 1.0f-0.2f*(val/100); }
 	
-	private float _spring = 0.2f;
-	private float _friction = 1.0f;
+	
 	private void springTo(Ball ball, float targetX, float targetY)
 	{
 		Point ball_center = ball.getPosition();

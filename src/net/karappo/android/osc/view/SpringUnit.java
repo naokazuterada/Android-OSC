@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
@@ -21,19 +22,21 @@ public class SpringUnit extends LinearLayout
 	
 	private int id;
 	
+	private TextView idTV;
 	private ToggleButton enableBtn;
+	private Button settingBtn;
+	private TableLayout settingPanel;
 	
 	private SeekBar springSeek;
-	private TextView springTV;
 	private Button springBtn1;
 	private Button springBtn2;
 	
 	private SeekBar frictionSeek;
-	private TextView frictionTV;
 	private Button frictionBtn1;
 	private Button frictionBtn2;
 	
-	public SpringUnit(Context context, AttributeSet attrs) {
+	public SpringUnit(Context context, AttributeSet attrs) 
+	{
 		super(context, attrs);
 		
 		LayoutInflater inflater = LayoutInflater.from(getContext());
@@ -41,15 +44,32 @@ public class SpringUnit extends LinearLayout
 		
 		animLayout = (AnimLayout) v.findViewById(R.id.anim_layout);
 		
+		idTV = (TextView) v.findViewById(R.id.idTV);
+		if(!isInEditMode()) // Eclipseè„Ç≈ÉGÉâÅ[Ç…Ç»ÇÈÇÃÇñhé~
+		{
+			Typeface face = Typeface.createFromAsset(context.getAssets(), "fonts/DS-DIGI.TTF");
+			idTV.setTypeface(face);
+		}
+		
 		enableBtn = (ToggleButton) v.findViewById(R.id.enableBtn);
 		
+		settingPanel = (TableLayout) v.findViewById(R.id.settingPanel);
+		settingBtn = (Button) v.findViewById(R.id.settingBtn);
+		settingBtn.setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				if(settingPanel.getVisibility()==View.GONE)	settingPanel.setVisibility(View.VISIBLE);
+				else 										settingPanel.setVisibility(View.GONE);
+			}
+		});
+		
 		springSeek = (SeekBar) v.findViewById(R.id.springSeek);
-		springTV = (TextView) v.findViewById(R.id.springTV);
 		springBtn1 = (Button) v.findViewById(R.id.springBtn1);
 		springBtn2 = (Button) v.findViewById(R.id.springBtn2);
 		
 		frictionSeek = (SeekBar) v.findViewById(R.id.frictionSeek);
-		frictionTV = (TextView) v.findViewById(R.id.frictionTV);
 		frictionBtn1 = (Button) v.findViewById(R.id.frictionBtn1);
 		frictionBtn2 = (Button) v.findViewById(R.id.frictionBtn2);
 		
@@ -129,6 +149,9 @@ public class SpringUnit extends LinearLayout
 			}
 		});
 		
+		springBtn1.setEnabled(false);
+		frictionBtn1.setEnabled(false);
+		
 		addView(v);
 		
 	}
@@ -137,6 +160,7 @@ public class SpringUnit extends LinearLayout
 	public AnimLayout init(Main main, int unitId)
 	{
 		id = unitId;
+		idTV.setText(id+"");
 		animLayout.setOnSpringProgressChangedListener(main);
 		animLayout.setId(unitId);
 		animLayout.start();
