@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.View.MeasureSpec;
 import android.widget.FrameLayout;
 
 public class AnimLayout extends FrameLayout implements Runnable
@@ -60,13 +61,14 @@ public class AnimLayout extends FrameLayout implements Runnable
 	}
 	
 	@Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)
+	protected void onMeasure(int widthMeasureSpec,int heightMeasureSpec)
 	{
-		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-		
-		ball.init(new Point((int)getWidth()/2,(int)getHeight()/2));
-    }
-	
+	    super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+	    int width = MeasureSpec.getSize(widthMeasureSpec);
+	    int height = MeasureSpec.getSize(heightMeasureSpec);
+	    ball.init(new Point((int)width/2,(int)height/2));
+	}
+    
 	public void setId(int unitId){ id = unitId; }
 	
 	public void setSpring(float val){ _spring = 0.01f+0.4f*val/100; }

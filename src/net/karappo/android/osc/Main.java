@@ -22,6 +22,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -56,11 +57,8 @@ public class Main extends Activity implements OnSpringProgressChangedListener
  	private TextView testTV;
  	private TextView plusTV;
  	private TextView minusTV;
- 	private ArrayList<AnimLayout> units = new ArrayList<AnimLayout>();
- 	private AnimLayout unit1;
- 	private AnimLayout unit2;
- 	private AnimLayout unit3;
- 	private AnimLayout unit4;
+ 	private ArrayList<AnimLayout> animLayouts = new ArrayList<AnimLayout>();
+ 	private LinearLayout unitsLayout;
  	
 	@Override
     public void onCreate(Bundle savedInstanceState)
@@ -76,10 +74,7 @@ public class Main extends Activity implements OnSpringProgressChangedListener
         testTV = (TextView) findViewById(R.id.testTV);
         plusTV = (TextView) findViewById(R.id.plusTV);
         minusTV = (TextView) findViewById(R.id.minusTV);
-		unit1 = ((SpringUnit) findViewById(R.id.unit1)).init(this,1);
-		unit2 = ((SpringUnit) findViewById(R.id.unit2)).init(this,2);
-		unit3 = ((SpringUnit) findViewById(R.id.unit3)).init(this,3);
-		unit4 = ((SpringUnit) findViewById(R.id.unit4)).init(this,4);
+        unitsLayout = (LinearLayout) findViewById(R.id.unitsLayout);
 
 		Typeface face = Typeface.createFromAsset(getAssets(), "fonts/DS-DIGI.TTF");
 		hostTV.setTypeface(face);
@@ -139,11 +134,24 @@ public class Main extends Activity implements OnSpringProgressChangedListener
 	
 	private void addUnit()
 	{
+		int nextId = animLayouts.size()+1;
+		SpringUnit springUnit = new SpringUnit(getBaseContext());
+		LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+		layoutParams.setMargins(0, 0, 0, 5);
+		springUnit.setLayoutParams(layoutParams);
+		unitsLayout.addView(springUnit);
+		
+		animLayouts.add(springUnit.init(this, nextId));
 		
 	}
 	private void removeUnit()
 	{
+		if(animLayouts.size()<=0) return;
 		
+		SpringUnit lastUnit = (SpringUnit) unitsLayout.getChildAt(unitsLayout.getChildCount()-1);
+		((AnimLayout)lastUnit.getAnimLayout()).stop();
+		animLayouts.remove(animLayouts.size()-1);
+		unitsLayout.removeView(lastUnit);
 	}
 	
 	private void setConfigDisp()
@@ -212,11 +220,11 @@ public class Main extends Activity implements OnSpringProgressChangedListener
 	@Override
 	protected void onDestroy() 
 	{
+		for(int i=0; i<animLayouts.size(); i++)
+		{
+			((AnimLayout)animLayouts.get(i)).stop();
+		}
 		super.onDestroy();
-		unit1.stop();
-		unit2.stop();
-		unit3.stop();
-		unit4.stop();
 	}
 
 	// ƒoƒl‚Ì’l‚ª•Ï‚í‚Á‚½Žž

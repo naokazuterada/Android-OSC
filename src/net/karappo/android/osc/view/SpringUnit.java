@@ -4,6 +4,7 @@ import net.karappo.android.osc.Main;
 import net.karappo.android.osc.R;
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Point;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -35,10 +36,20 @@ public class SpringUnit extends LinearLayout
 	private Button frictionBtn1;
 	private Button frictionBtn2;
 	
+	public SpringUnit(Context context) 
+	{
+		super(context);
+		setting(context);
+	}
+	
 	public SpringUnit(Context context, AttributeSet attrs) 
 	{
 		super(context, attrs);
-		
+		setting(context);
+	}
+	
+	public void setting(Context context)
+	{
 		LayoutInflater inflater = LayoutInflater.from(getContext());
 		View v = inflater.inflate(R.layout.spring_unit, null);
 		
@@ -153,9 +164,7 @@ public class SpringUnit extends LinearLayout
 		frictionBtn1.setEnabled(false);
 		
 		addView(v);
-		
 	}
-	
 	
 	public AnimLayout init(Main main, int unitId)
 	{
@@ -164,6 +173,10 @@ public class SpringUnit extends LinearLayout
 		animLayout.setOnSpringProgressChangedListener(main);
 		animLayout.setId(unitId);
 		animLayout.start();
+		return animLayout;
+	}
+	public AnimLayout getAnimLayout()
+	{
 		return animLayout;
 	}
 }
