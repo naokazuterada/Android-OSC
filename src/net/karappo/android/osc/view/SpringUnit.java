@@ -76,8 +76,8 @@ public class SpringUnit extends LinearLayout
 			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromTouch)
 			{
 				animLayout.setSpring(progress);
-				if(progress==0) springBtn1.setEnabled(false);
-				else 			springBtn1.setEnabled(true);
+				if(progress==0) 	springBtn1.setEnabled(false);
+				else 				springBtn1.setEnabled(true);
 				if(progress==100) 	springBtn2.setEnabled(false);
 				else 				springBtn2.setEnabled(true);
 			}
@@ -107,8 +107,8 @@ public class SpringUnit extends LinearLayout
 			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromTouch)
 			{
 				animLayout.setFriction(progress);
-				if(progress==0) frictionBtn1.setEnabled(false);
-				else 			frictionBtn1.setEnabled(true);
+				if(progress==0) 	frictionBtn1.setEnabled(false);
+				else 				frictionBtn1.setEnabled(true);
 				if(progress==100) 	frictionBtn2.setEnabled(false);
 				else 				frictionBtn2.setEnabled(true);
 			}

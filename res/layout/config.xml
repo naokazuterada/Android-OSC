@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res/net.karappo.android.osc"
+    android:orientation="vertical"
+    android:layout_height="fill_parent"
+    android:background="#222222" android:layout_width="500px" android:padding="20px">
+    <TableLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/tableLayout1">
+        <TableRow android:layout_width="wrap_content" android:id="@+id/tableRow2" android:layout_height="wrap_content">
+            <TextView android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="IP Address"></TextView>
+            <TextView android:id="@+id/textView2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Port"></TextView>
+        </TableRow>
+        <TableRow android:layout_width="match_parent" android:id="@+id/tableRow1" android:layout_height="wrap_content">
+            <LinearLayout android:layout_height="wrap_content" android:id="@+id/linearLayout1" android:layout_marginRight="10px" android:layout_weight="1" android:layout_width="match_parent">
+                <EditText android:numeric="integer" android:id="@+id/host_ip_1" android:text="192" android:layout_weight="1" android:hint="IP Address" android:singleLine="true" android:layout_height="wrap_content" android:textSize="20dip" android:maxWidth="60dip" android:layout_width="match_parent"></EditText>
+                <TextView android:id="@+id/textView3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="." android:textSize="20dip"></TextView>
+                <EditText android:layout_width="fill_parent" android:numeric="integer" android:id="@+id/host_ip_2" android:text="168" android:layout_weight="1" android:hint="IP Address" android:singleLine="true" android:layout_height="wrap_content"></EditText>
+                <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/TextView01" android:text="." android:textSize="20dip"></TextView>
+                <EditText android:layout_width="fill_parent" android:numeric="integer" android:id="@+id/host_ip_3" android:text="1" android:layout_weight="1" android:hint="IP Address" android:singleLine="true" android:layout_height="wrap_content"></EditText>
+                <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/TextView02" android:text="." android:textSize="20dip"></TextView>
+                <EditText android:numeric="integer" android:id="@+id/host_ip_4" android:text="2" android:layout_weight="1" android:hint="IP Address" android:singleLine="true" android:layout_height="wrap_content" android:layout_width="fill_parent"></EditText>
+            </LinearLayout>
+            <EditText android:id="@+id/host_port" android:layout_height="wrap_content" android:text="7400" android:hint="Port" android:singleLine="true" android:layout_width="100dip"></EditText>
+        </TableRow>
+    </TableLayout>
+    <Button android:id="@+id/connect_btn" android:layout_height="wrap_content" android:text="Connect" android:layout_weight="0" android:layout_width="match_parent"></Button>
+    <Button android:id="@+id/send_btn" android:layout_height="wrap_content" android:text="test" android:layout_weight="0" android:layout_width="match_parent"></Button>
+</LinearLayout>
