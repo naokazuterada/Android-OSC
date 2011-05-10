@@ -23,6 +23,8 @@
             <EditText android:id="@+id/host_port" android:layout_height="wrap_content" android:text="7400" android:hint="Port" android:singleLine="true" android:layout_width="100dip"></EditText>
         </TableRow>
     </TableLayout>
-    <Button android:id="@+id/connect_btn" android:layout_height="wrap_content" android:text="Connect" android:layout_weight="0" android:layout_width="match_parent"></Button>
-    <Button android:id="@+id/send_btn" android:layout_height="wrap_content" android:text="test" android:layout_weight="0" android:layout_width="match_parent"></Button>
+    <LinearLayout android:id="@+id/linearLayout2" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+        <Button android:layout_weight="1" android:layout_width="match_parent" android:id="@+id/cancel_btn" android:layout_height="wrap_content" android:text="Cancel"></Button>
+        <Button android:layout_weight="1" android:layout_width="match_parent" android:id="@+id/connect_btn" android:layout_height="wrap_content" android:text="OK"></Button>
+    </LinearLayout>
 </LinearLayout>

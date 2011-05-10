@@ -53,9 +53,6 @@ public class SpringUnit extends LinearLayout
 		frictionBtn1 = (Button) v.findViewById(R.id.frictionBtn1);
 		frictionBtn2 = (Button) v.findViewById(R.id.frictionBtn2);
 		
-//		Typeface face = Typeface.createFromAsset(context.getAssets(), "fonts/DS-DIGI.TTF");
-//		springTV.setTypeface(face);
-//		frictionTV.setTypeface(face);
 		
 		// ユニットを有効に
 		enableBtn.setChecked(true);

@@ -25,7 +25,7 @@ public class AnimLayout extends FrameLayout implements Runnable
 	
 	// Event
 	protected OnSpringProgressChangedListener listener;
-	public interface OnSpringProgressChangedListener{ void onChanged(int unitId, float value); }
+	public interface OnSpringProgressChangedListener{ void onChanged(int unitId, float position, float speed); }
 	public void setOnSpringProgressChangedListener(OnSpringProgressChangedListener listener){ this.listener = listener; }
 	
 	
@@ -62,7 +62,7 @@ public class AnimLayout extends FrameLayout implements Runnable
 	
 	public void setId(int unitId){ id = unitId; }
 	
-	public void setSpring(float val){ _spring = 0.1f+0.4f*val/100; }
+	public void setSpring(float val){ _spring = 0.01f+0.4f*val/100; }
 	public void setFriction(float val){ _friction = 1.0f-0.2f*(val/100); }
 	
 	private float _spring = 0.2f;
@@ -86,11 +86,12 @@ public class AnimLayout extends FrameLayout implements Runnable
     public boolean onTouchEvent(MotionEvent event) 
 	{
 		int action = event.getAction();
-	    switch (action & MotionEvent.ACTION_MASK) 
+		
+		switch (action & MotionEvent.ACTION_MASK) 
 	    {
 	    case MotionEvent.ACTION_DOWN:
 	    case MotionEvent.ACTION_POINTER_DOWN:
-//	    	Log.d(TAG,"onTouch");
+	    	Log.d(TAG,"onTouchEvent"+this+" "+action);
 	    	touching = true;
 	    	break;
 	    case MotionEvent.ACTION_MOVE:
@@ -110,39 +111,6 @@ public class AnimLayout extends FrameLayout implements Runnable
         
         return true;
 	}
-	
-	/*
-	// Multi touch
-	public boolean onTouchEvent(MotionEvent ev) 
-	{
-	    int action = ev.getAction();
-	    switch (action & MotionEvent.ACTION_MASK) 
-	    {
-	    case MotionEvent.ACTION_DOWN:
-	    case MotionEvent.ACTION_POINTER_DOWN:
-	    case MotionEvent.ACTION_MOVE:
-	    	put_points(ev);
-	    	break;
-	    case MotionEvent.ACTION_UP:
-	    	points.remove(ev.getPointerId(0));
-	    	break;
-	    case MotionEvent.ACTION_POINTER_UP:
-	    	put_points(ev);
-	    	int index = (action & MotionEvent.ACTION_POINTER_INDEX_MASK) >> MotionEvent.ACTION_POINTER_INDEX_SHIFT;
-	    	points.remove(ev.getPointerId(index));
-			break;
-	    }
-
-//	    Canvas canvas = getHolder().lockCanvas();
-//	    if (canvas != null)
-//	    {
-//	    	onDraw(canvas);
-//	    	getHolder().unlockCanvasAndPost(canvas);
-//	    }
-	    if(points.get(0)!=null) Log.d(TAG,"p:"+((TouchPoint)points.get(0)).p);
-	    return true;
-	}
-	*/
 	
 	Hashtable<Integer, TouchPoint> points = new Hashtable<Integer, TouchPoint>();
 	class TouchPoint
@@ -177,7 +145,7 @@ public class AnimLayout extends FrameLayout implements Runnable
 			// OSC SEND
 			float val = ball.getPosition().x;	// 0 Å` getWidth()
 			float val2 = val/getWidth()*2 -1;// -1 ~ 1 
-			if(listener!=null && enabled) listener.onChanged(id, val2);
+			if(listener!=null && enabled) listener.onChanged(id, val2, ball.vx);
 		}
 	};
 	@Override
@@ -203,5 +171,5 @@ public class AnimLayout extends FrameLayout implements Runnable
 	{
 		enabled = val;
 	}
-	
 }
+
