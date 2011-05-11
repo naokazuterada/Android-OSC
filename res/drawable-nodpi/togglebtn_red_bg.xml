@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+	<!-- 通常 -->
+	<item
+		android:state_enabled="true"
+		android:state_window_focused="false"
+		android:drawable="@drawable/togglebtn_red_bg_normal" />
+	<!-- 押下 -->
+	<item
+		android:state_pressed="true"
+		android:drawable="@drawable/togglebtn_red_bg_pressed" />
+	<!-- 通常 -->
+	<item
+		android:state_enabled="true"
+		android:drawable="@drawable/togglebtn_red_bg_normal" />
+</selector>

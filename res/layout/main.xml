@@ -7,14 +7,13 @@
     android:layout_height="fill_parent"
     android:background="#222222">
     <LinearLayout android:id="@+id/configDisp" android:layout_width="match_parent" android:layout_marginTop="5px" android:layout_height="wrap_content" android:layout_marginRight="5px" android:layout_marginLeft="5px">
-        <TextView android:background="#000000" android:text="192.168.1.2:7400" android:padding="20px" android:layout_width="wrap_content" android:textColor="#0054BF" android:id="@+id/hostTV" android:layout_height="wrap_content" android:textSize="20dip"></TextView>
-        <TextView android:background="#000000" android:text="TEST" android:padding="20px" android:layout_width="wrap_content" android:textColor="#0054BF" android:layout_marginLeft="5px" android:id="@+id/testTV" android:layout_height="wrap_content" android:textSize="20dip"></TextView>
-        <TextView android:background="#000000" android:text="+" android:padding="20px" android:layout_width="wrap_content" android:textColor="#0054BF" android:layout_marginLeft="5px" android:id="@+id/plusTV" android:layout_height="wrap_content" android:textSize="20dip"></TextView>
-        <TextView android:background="#000000" android:text="-" android:padding="20px" android:layout_width="wrap_content" android:textColor="#0054BF" android:layout_marginLeft="5px" android:id="@+id/minusTV" android:layout_height="wrap_content" android:textSize="20dip"></TextView>
+        <TextView android:background="#000000" android:text="192.168.1.2:7400" android:padding="20px" android:layout_width="wrap_content" android:id="@+id/hostTV" android:layout_height="wrap_content" android:textSize="20dip" android:textColor="#666666"></TextView>
+        <TextView android:background="#000000" android:text="+" android:padding="20px" android:layout_width="wrap_content" android:textColor="#0054BF" android:layout_marginLeft="5px" android:layout_height="wrap_content" android:textSize="20dip" android:id="@+id/springPlusTV"></TextView>
+        <TextView android:layout_width="wrap_content" android:layout_marginLeft="5px" android:layout_height="wrap_content" android:padding="20px" android:text="+" android:background="#000000" android:textSize="20dip" android:textColor="#FF003F" android:id="@+id/collisionPlusTV"></TextView>
+        <TextView android:layout_width="wrap_content" android:layout_marginLeft="5px" android:layout_height="wrap_content" android:padding="20px" android:text="-" android:background="#000000" android:textSize="20dip" android:textColor="#666666" android:id="@+id/minusTV"></TextView>
         <TextView android:background="#000000" android:text="Alt_OSC : spring" android:padding="20px" android:layout_width="match_parent" android:textColor="#666666" android:gravity="right|center_vertical" android:layout_marginLeft="5px" android:id="@+id/TextView01" android:layout_height="match_parent" android:textSize="15dip"></TextView>
     </LinearLayout>
     <ScrollView android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/scrollView1">
-        <LinearLayout android:id="@+id/unitsLayout" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:layout_marginLeft="5px" android:layout_marginRight="5px" android:layout_marginTop="5px">
-        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:layout_marginLeft="5px" android:layout_marginRight="5px" android:layout_marginTop="5px" android:id="@+id/units"></LinearLayout>
     </ScrollView>
 </LinearLayout>

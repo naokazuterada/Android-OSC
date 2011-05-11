@@ -1,0 +1,8 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">  
+<item  
+android:id="@+android:id/background"  
+android:drawable="@drawable/togglebtn_red_bg" />
+<item  
+android:id="@+android:id/toggle"  
+android:drawable="@drawable/togglebtn_red" />
+</layer-list>  

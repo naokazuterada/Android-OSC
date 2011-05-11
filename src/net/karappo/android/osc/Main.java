@@ -5,21 +5,17 @@ import java.io.Serializable;
 import java.net.InetAddress;
 import java.util.ArrayList;
 
+import net.karappo.android.osc.view.AnimLayout.OnChangedListener;
+import net.karappo.android.osc.view.Unit;
 import net.karappo.android.osc.view.AnimLayout;
-import net.karappo.android.osc.view.AnimLayout.OnSpringProgressChangedListener;
-import net.karappo.android.osc.view.SpringUnit;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.graphics.Point;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
@@ -31,7 +27,7 @@ import android.widget.Toast;
 import com.illposed.osc.OSCMessage;
 import com.illposed.osc.OSCPortOut;
 
-public class Main extends Activity implements OnSpringProgressChangedListener
+public class Main extends Activity implements OnChangedListener
 {
 	private final String TAG = "OSC";
 	final private boolean D = true;
@@ -54,16 +50,17 @@ public class Main extends Activity implements OnSpringProgressChangedListener
 	
  	// views
  	private TextView hostTV;
- 	private TextView testTV;
- 	private TextView plusTV;
+ 	private TextView springPlusTV;
+ 	private TextView collisionPlusTV;
  	private TextView minusTV;
  	private ArrayList<AnimLayout> animLayouts = new ArrayList<AnimLayout>();
- 	private LinearLayout unitsLayout;
+ 	private LinearLayout units;
  	
 	@Override
     public void onCreate(Bundle savedInstanceState)
 	{
         super.onCreate(savedInstanceState);
+        //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_REVERSE_PORTRAIT);	// 3.0‚Ì‚Ý
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.main);
         
@@ -71,15 +68,15 @@ public class Main extends Activity implements OnSpringProgressChangedListener
         host = getHost();
         
         hostTV = (TextView) findViewById(R.id.hostTV);
-        testTV = (TextView) findViewById(R.id.testTV);
-        plusTV = (TextView) findViewById(R.id.plusTV);
+        springPlusTV = (TextView) findViewById(R.id.springPlusTV);
         minusTV = (TextView) findViewById(R.id.minusTV);
-        unitsLayout = (LinearLayout) findViewById(R.id.unitsLayout);
+        collisionPlusTV = (TextView) findViewById(R.id.collisionPlusTV);
+        units = (LinearLayout) findViewById(R.id.units);
 
 		Typeface face = Typeface.createFromAsset(getAssets(), "fonts/DS-DIGI.TTF");
 		hostTV.setTypeface(face);
-		testTV.setTypeface(face);
-		plusTV.setTypeface(face);
+		springPlusTV.setTypeface(face);
+		collisionPlusTV.setTypeface(face);
 		minusTV.setTypeface(face);
 		
 		hostTV.setOnClickListener(new OnClickListener(){
@@ -91,18 +88,18 @@ public class Main extends Activity implements OnSpringProgressChangedListener
 				startActivityForResult(i,REQUEST_HOST_SETTING);
 			}
 		});
-		testTV.setOnClickListener(new OnClickListener(){
+		springPlusTV.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View arg0)
 			{
-				pingTestData();
+				addUnit(new net.karappo.android.osc.view.spring.Unit(getBaseContext()));
 			}
 		});
-		plusTV.setOnClickListener(new OnClickListener(){
+		collisionPlusTV.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View arg0)
 			{
-				addUnit();
+				addUnit(new net.karappo.android.osc.view.bounce.Unit(getBaseContext()));
 			}
 		});
 		minusTV.setOnClickListener(new OnClickListener(){
@@ -132,26 +129,25 @@ public class Main extends Activity implements OnSpringProgressChangedListener
         }
     }
 	
-	private void addUnit()
+	private void addUnit(Unit unit)
 	{
-		int nextId = animLayouts.size()+1;
-		SpringUnit springUnit = new SpringUnit(getBaseContext());
+		int nextId = units.getChildCount()+1;
 		LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 		layoutParams.setMargins(0, 0, 0, 5);
-		springUnit.setLayoutParams(layoutParams);
-		unitsLayout.addView(springUnit);
+		unit.setLayoutParams(layoutParams);
+		units.addView(unit);
 		
-		animLayouts.add(springUnit.init(this, nextId));
+		animLayouts.add(unit.init(this, nextId));
 		
 	}
 	private void removeUnit()
 	{
-		if(animLayouts.size()<=0) return;
+		if(units.getChildCount()<=0) return;
 		
-		SpringUnit lastUnit = (SpringUnit) unitsLayout.getChildAt(unitsLayout.getChildCount()-1);
+		Unit lastUnit = (Unit) units.getChildAt(units.getChildCount()-1);
 		((AnimLayout)lastUnit.getAnimLayout()).stop();
 		animLayouts.remove(animLayouts.size()-1);
-		unitsLayout.removeView(lastUnit);
+		units.removeView(lastUnit);
 	}
 	
 	private void setConfigDisp()

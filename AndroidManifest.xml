@@ -22,7 +22,7 @@
 	        </intent-filter>
 	    </activity>
 	    <activity
-	    	android:name=".Config"
+	    	android:name="Config"
 	        android:screenOrientation="portrait"
 			android:configChanges="keyboardHidden|orientation"
 			android:theme="@android:style/Theme.Dialog">

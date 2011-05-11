@@ -26,8 +26,6 @@ public class Ball extends View implements AnimView
 	public float vx = 0;
 	public float vy = 0;
 	
-	
-	
 	public Ball(Context context)
 	{
 		super(context);
@@ -78,7 +76,11 @@ public class Ball extends View implements AnimView
 	{
 		return center;
 	}
-
+	public int getDiameter()
+	{
+		return diameter;
+	}
+	
 	@Override
 	public void update() 
 	{
