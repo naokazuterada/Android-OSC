@@ -5,9 +5,9 @@ import java.io.Serializable;
 import java.net.InetAddress;
 import java.util.ArrayList;
 
-import net.karappo.android.osc.view.AnimLayout.OnChangedListener;
-import net.karappo.android.osc.view.Unit;
-import net.karappo.android.osc.view.AnimLayout;
+import net.karappo.android.osc.view.unit.AnimLayout;
+import net.karappo.android.osc.view.unit.Unit;
+import net.karappo.android.osc.view.unit.AnimLayout.OnChangedListener;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -92,14 +92,14 @@ public class Main extends Activity implements OnChangedListener
 			@Override
 			public void onClick(View arg0)
 			{
-				addUnit(new net.karappo.android.osc.view.spring.Unit(getBaseContext()));
+				addUnit(new net.karappo.android.osc.view.unit.spring.Unit(getBaseContext()));
 			}
 		});
 		collisionPlusTV.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View arg0)
 			{
-				addUnit(new net.karappo.android.osc.view.bounce.Unit(getBaseContext()));
+				addUnit(new net.karappo.android.osc.view.unit.bounce.Unit(getBaseContext()));
 			}
 		});
 		minusTV.setOnClickListener(new OnClickListener(){

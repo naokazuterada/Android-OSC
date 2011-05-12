@@ -23,8 +23,8 @@ public class Ball extends View implements AnimView
 	public Point start_point = new Point((int)diameter/2,(int)diameter/2);
 	private Point center = start_point;
 	
-	public float vx = 0;
-	public float vy = 0;
+	public double vx = 0;
+	public double vy = 0;
 	
 	public Ball(Context context)
 	{

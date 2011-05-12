@@ -3,30 +3,30 @@
 	xmlns:app="http://schemas.android.com/apk/res/net.karappo.android.osc"
     android:layout_width="fill_parent" android:layout_height="wrap_content" android:background="#000000" android:orientation="vertical" xmlns:android="http://schemas.android.com/apk/res/android" android:layout_marginBottom="5px" android:layout_marginLeft="5px" android:layout_marginRight="5px">
     <LinearLayout android:id="@+id/linearLayout2" android:layout_width="wrap_content" android:layout_height="match_parent" android:orientation="horizontal" android:gravity="center_vertical">
-        <TextView android:layout_height="match_parent" android:textSize="40dip" android:gravity="right|center_vertical" android:textColor="#FF003F" android:layout_width="50dip" android:text="0" android:id="@+id/idTV"/>
+        <TextView android:layout_height="match_parent" android:gravity="right|center_vertical" android:textColor="#FF003F" android:text="0" android:id="@+id/idTV" android:layout_width="50px" android:textSize="40px"/>
         <ToggleButton android:checked="true" android:layout_width="30px" android:id="@+id/enableBtn" android:layout_height="match_parent" android:textOff=""  android:textOn="" android:background="@drawable/togglebtn_red"/>
         <Button android:layout_height="wrap_content" style="@style/CircleButton" android:layout_width="match_parent" android:id="@+id/settingBtn" />
         <LinearLayout android:id="@+id/linearLayout1" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_weight="1">
             <FrameLayout android:padding="10px" android:id="@+id/frameLayout1" android:layout_width="match_parent" android:layout_height="wrap_content">
-                <net.karappo.android.osc.view.bounce.AnimLayout android:id="@+id/anim_layout" android:background="@drawable/animlayout_bg" android:layout_height="60px" android:layout_width="match_parent" />
+                <net.karappo.android.osc.view.unit.bounce.AnimLayout android:id="@+id/anim_layout" android:background="@drawable/animlayout_bg" android:layout_height="60px" android:layout_width="match_parent"/>
             </FrameLayout>
         </LinearLayout>
     </LinearLayout>
     <TableLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="10px" android:id="@+id/settingPanel">
         <TableRow android:layout_marginBottom="10px" android:id="@+id/TableRow01" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <TextView android:textColor="#444444" android:layout_height="wrap_content" android:id="@+id/springTV" android:layout_width="wrap_content" android:text="GRAVITY"/>
+            <TextView android:layout_height="wrap_content" android:id="@+id/springTV" android:textSize="10px" android:layout_width="70px" android:text="gravity" android:textColor="#666666"/>
             <Button android:layout_height="wrap_content" style="@style/CircleButton" android:layout_width="wrap_content" android:id="@+id/gravityBtnMin"/>
             <SeekBar android:layout_marginRight="10px" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginLeft="10px" android:layout_width="300px" android:id="@+id/gravitySeek" android:progressDrawable="@drawable/seekbar_red"/>
             <Button android:layout_height="wrap_content" style="@style/CircleButton" android:layout_width="wrap_content" android:id="@+id/gravityBtnMax"/>
         </TableRow>
         <TableRow android:id="@+id/TableRow02" android:gravity="center_vertical" android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_marginBottom="10px">
-            <TextView android:textColor="#444444" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/TextView01" android:layout_marginRight="30px" android:text="REFLECTION"></TextView>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/TextView01" android:textSize="10px" android:text="reflection" android:textColor="#666666"></TextView>
             <Button style="@style/CircleButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/reflectionBtnMin"></Button>
             <SeekBar android:layout_marginLeft="10px" android:layout_weight="1" android:fadingEdge="horizontal|vertical" android:layout_width="300px" android:layout_height="wrap_content" android:layout_marginRight="10px" android:id="@+id/reflectionSeek" android:progressDrawable="@drawable/seekbar_red"></SeekBar>
             <Button style="@style/CircleButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/reflectionBtnMax"></Button>
         </TableRow>
         <TableRow android:id="@+id/tableRow1" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <TextView android:text="FRICTION" android:textColor="#444444" android:layout_height="wrap_content" android:id="@+id/frictionTV" android:layout_marginRight="30px" android:layout_width="wrap_content" />
+            <TextView android:layout_height="wrap_content" android:id="@+id/frictionTV" android:layout_width="wrap_content" android:textSize="10px" android:text="friction" android:textColor="#666666"/>
             <Button android:layout_height="wrap_content" style="@style/CircleButton" android:layout_width="wrap_content" android:id="@+id/frictionBtnMin"/>
             <SeekBar android:layout_marginRight="10px" android:layout_height="wrap_content" android:id="@+id/frictionSeek" android:layout_weight="1" android:fadingEdge="horizontal|vertical" android:layout_marginLeft="10px" android:layout_width="300px" android:progressDrawable="@drawable/seekbar_red"/>
             <Button android:layout_height="wrap_content" style="@style/CircleButton" android:layout_width="wrap_content" android:id="@+id/frictionBtnMax"/>
