@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hello World, Main!</string>
     <string name="app_name">OSC</string>
+    <color name="unitcolor_spring">#0054BF</color>
+    <color name="unitcolor_bounce">#FF003F</color>
+    <color name="anim_edgecolor">#454545</color>
 </resources>

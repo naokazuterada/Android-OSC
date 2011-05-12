@@ -9,8 +9,9 @@ import android.view.MotionEvent;
 
 public class AnimLayout extends net.karappo.android.osc.view.unit.AnimLayout
 {
-	final private static String TAG = "OSC";
-	final private boolean D = true;
+	public static final String type = "spring";
+	
+	private boolean stop = false;
 	
 	private float _spring = 0.2f;
 	private float _friction = 1.0f;
@@ -35,22 +36,24 @@ public class AnimLayout extends net.karappo.android.osc.view.unit.AnimLayout
 	public void setSpring(float val){ _spring = 0.01f+0.4f*val/100; }
 	public void setFriction(float val){ _friction = 1.0f-0.2f*(val/100); }
 	
+	private int old_x = 10000000;
 	private void calculate()
 	{
 		float targetX = getWidth()/2;
-		float targetY = ball.start_point.y;
+		
+		Point new_center = new Point(0,getHeight()/2);
 		
 		Point ball_center = ball.getPosition();
 		ball.vx += (targetX - ball_center.x) * _spring;
-		ball.vy += (targetY - ball_center.y) * _spring;
-
 		ball.vx *= _friction;
-		ball.vy *= _friction;
-		
-		Point new_center = new Point();
 		new_center.x = (int) (ball_center.x  + ball.vx);
-		new_center.y = (int) (ball_center.y  + ball.vy);
+
+		if(old_x!=10000000 && new_center.x == old_x) 	stop = true;
+		else 						stop = false;
+		if(stop) Log.d(TAG,"?"+new_center.x);
 		ball.setPosition(new_center);
+		
+		old_x = new_center.x;
 	}
 	
 	@Override
@@ -91,8 +94,10 @@ public class AnimLayout extends net.karappo.android.osc.view.unit.AnimLayout
 		
 		// OSC SEND
 		float val = ball.getPosition().x;	// 0 Å` getWidth()
-		float val2 = val/getWidth()*2 -1;// -1 ~ 1 
-		if(listener!=null && enabled) listener.onChanged(id, val2, (float)ball.vx);
+		float position = val/getWidth()*2 -1;// -1 ~ 1 
+		float speed = ball.vx;
+		Object[] oscArgs = {position, speed};
+		if(listener!=null && enabled && !stop) listener.onChanged(id, "spring", oscArgs);
 	};
 }
 

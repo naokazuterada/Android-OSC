@@ -23,8 +23,8 @@ public class Ball extends View implements AnimView
 	public Point start_point = new Point((int)diameter/2,(int)diameter/2);
 	private Point center = start_point;
 	
-	public double vx = 0;
-	public double vy = 0;
+	public float vx = 0;
+	public float vy = 0;
 	
 	public Ball(Context context)
 	{
@@ -35,6 +35,7 @@ public class Ball extends View implements AnimView
 		super(context);
 		this.diameter = diameter;
 	}
+	
 	public Ball(Context context, int diameter, int lineWidth, int lineColor, int fillColor)
 	{
 		super(context);
@@ -55,7 +56,7 @@ public class Ball extends View implements AnimView
         Paint paint = new Paint();
         paint.setColor(lineColor);
         paint.setAntiAlias(true);
-        canvas.drawCircle(radius, radius, radius, paint);
+        if(0<lineWidth) canvas.drawCircle(radius, radius, radius, paint);
         
         paint.setColor(fillColor);
         canvas.translate(lineWidth, lineWidth);

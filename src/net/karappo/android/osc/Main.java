@@ -225,10 +225,9 @@ public class Main extends Activity implements OnChangedListener
 
 	// ƒoƒl‚Ì’l‚ª•Ï‚í‚Á‚½Žž
 	@Override
-	public void onChanged(int id, float position, float speed) 
+	public void onChanged(int id, String unitType, Object[] oscArgs) 
 	{
-		Object[] oscArgs = {position, speed};
-		OSCMessage oscMsg = new OSCMessage(root+"/spring/"+id, oscArgs);
+		OSCMessage oscMsg = new OSCMessage(root+"/"+unitType+"/"+id, oscArgs);
 		sendOSCMessage(oscMsg);
 	}
 	

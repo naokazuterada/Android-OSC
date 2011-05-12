@@ -10,15 +10,16 @@ import android.widget.FrameLayout;
 
 public class AnimLayout extends FrameLayout implements Runnable
 {
-	final private static String TAG = "OSC";
-	final private boolean D = true;
+	protected static String TAG = "OSC";
+	protected boolean D = true;
 	
 	protected int id;
+	public static final String type = "super";	// サブクラスで上書き
 	protected boolean enabled = false;	// OSCを送信するかどうか
 	
 	// Event
 	protected OnChangedListener listener;
-	public interface OnChangedListener{ void onChanged(int unitId, float position, float speed); }
+	public interface OnChangedListener{ void onChanged(int unitId, String unitType, Object[] oscArgs); }
 	public void setOnChangedListener(OnChangedListener listener){ this.listener = listener; }
 	
 	// anitmation

@@ -8,12 +8,14 @@ import android.view.MotionEvent;
 
 public class AnimLayout extends net.karappo.android.osc.view.unit.AnimLayout
 {
-	final private static String TAG = "OSC";
-	final private boolean D = true;
+	public static final String type = "bounce";
 	
-	private float _gravity = 0.98f;
-	private float _reflection = 0.7f;
-	private double _friction = 0.99;
+	private float _gravity;
+	private float _reflection;
+	private float _friction;
+	
+	private boolean stop = false;
+	private boolean collision = false;	// è’ìÀ
 	
 	public AnimLayout(Context context, AttributeSet attrs)
 	{
@@ -35,10 +37,11 @@ public class AnimLayout extends net.karappo.android.osc.view.unit.AnimLayout
 	public void setReflection(float val) { 	_reflection = 0.7f+0.3f*val/100;	}
 	public void setFriction(float val)   { 	_friction 	= 1.0f-0.2f*(val/100);	}
 	
-	float last_edge_v;
-	int count = 0;
 	private void calculate()
 	{
+		stop = false;
+		collision = false;
+		
 		int right_edge = getWidth()-ball.getDiameter()/2;
 		int left_edge = ball.getDiameter()/2;
 		Point current_center = ball.getPosition();
@@ -53,15 +56,25 @@ public class AnimLayout extends net.karappo.android.osc.view.unit.AnimLayout
 		{
 			// Left Edge
 			ball.vx *= -_reflection;
-			if(Math.abs(ball.vx)<1) ball.vx = 0;
+			if(Math.abs(ball.vx)<1)
+			{
+				ball.vx = 0;
+				stop = true;
+			}
 			new_center.x = left_edge;
+			collision = true;
 		}
 		else if (right_edge<new_center.x) 
 		{
 			// Right Edge
 			ball.vx *= -_reflection;
-			if(Math.abs(ball.vx)<1) ball.vx = 0;
+			if(Math.abs(ball.vx)<1)
+			{
+				ball.vx = 0;
+				stop = true;
+			}
 			new_center.x = right_edge;
+			collision = true;
 		}
 		
 		ball.setPosition(new_center);
@@ -105,8 +118,10 @@ public class AnimLayout extends net.karappo.android.osc.view.unit.AnimLayout
 		
 		// OSC SEND
 		float val = ball.getPosition().x;	// 0 Å` getWidth()
-		float val2 = val/getWidth()*2 -1;// -1 ~ 1 
-		if(listener!=null && enabled) listener.onChanged(id, val2, (float)ball.vx);
+		float position = val/getWidth()*2 -1;// -1 ~ 1 
+		float speed = ball.vx;
+		Object[] oscArgs = {position, speed, collision};
+		if(listener!=null && enabled && !stop) listener.onChanged(id, type, oscArgs);
 	};
 }
 
