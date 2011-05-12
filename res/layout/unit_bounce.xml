@@ -7,8 +7,9 @@
         <ToggleButton android:checked="true" android:layout_width="30px" android:id="@+id/enableBtn" android:layout_height="match_parent" android:textOff=""  android:textOn="" android:background="@drawable/togglebtn_red"/>
         <Button android:layout_height="wrap_content" style="@style/CircleButton" android:layout_width="match_parent" android:id="@+id/settingBtn" />
         <LinearLayout android:id="@+id/linearLayout1" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_weight="1">
-            <FrameLayout android:padding="10px" android:id="@+id/frameLayout1" android:layout_width="match_parent" android:layout_height="wrap_content">
-                <net.karappo.android.osc.view.unit.bounce.AnimLayout android:id="@+id/anim_layout" android:background="@drawable/animlayout_bg" android:layout_height="60px" android:layout_width="match_parent"/>
+            <FrameLayout android:padding="10px" android:id="@+id/frameLayout1" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_gravity="center_horizontal">
+                <net.karappo.android.osc.view.unit.bounce.AnimLayout android:id="@+id/anim_layout" android:background="@drawable/animlayout_bg" android:layout_height="60px" android:layout_width="match_parent">
+                </net.karappo.android.osc.view.unit.bounce.AnimLayout>
             </FrameLayout>
         </LinearLayout>
     </LinearLayout>

@@ -18,10 +18,6 @@ public class AnimLayout extends net.karappo.android.osc.view.unit.AnimLayout
 	public AnimLayout(Context context, AttributeSet attrs)
 	{
 		super(context, attrs);
-		
-//		setGravity(0);
-//		setReflection(100);
-//	    setFriction(0);
 	}
 	
 	@Override
@@ -30,8 +26,8 @@ public class AnimLayout extends net.karappo.android.osc.view.unit.AnimLayout
 	    super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 	    int width = MeasureSpec.getSize(widthMeasureSpec);
 	    int height = MeasureSpec.getSize(heightMeasureSpec);
-	    ball.init(new Point(width-ball.getDiameter()/2,(int)height/2));
-//	    ball.init(new Point(ball.getDiameter()/2,(int)height/2));
+//	    ball.init(new Point(width-ball.getDiameter()/2,(int)height/2));
+	    ball.init(new Point(ball.getDiameter()/2,(int)height/2));
 	}
     
 	// val : 0 ~ 100
@@ -41,166 +37,36 @@ public class AnimLayout extends net.karappo.android.osc.view.unit.AnimLayout
 	
 	float last_edge_v;
 	int count = 0;
-	
 	private void calculate()
 	{
-//		Log.d(TAG,"G:R:F "+_gravity+":"+_reflection+":"+_friction);
 		int right_edge = getWidth()-ball.getDiameter()/2;
 		int left_edge = ball.getDiameter()/2;
 		Point current_center = ball.getPosition();
 		Point new_center = new Point(0,ball.start_point.y);	// y‚ÍŒÅ’è
 		
-		if(0<=_gravity)
-		{
-			ball.vx = (ball.vx+_gravity)*_friction;
-			new_center.x = (int) (current_center.x  + ball.vx);
-			
-			if (right_edge<new_center.x) 
-			{
-				// Right Edge
-				Log.d(TAG,"R :"+ball.vx);
-				ball.vx *= -_reflection;
-				if(Math.abs(ball.vx)<1)
-				{
-//					Log.d(TAG,"v=0");
-					ball.vx = 0;
-				}
-				
-				new_center.x = right_edge;
-				Log.d(TAG,"R>:"+ball.vx);
-			}
-		}
-		else
-		{
-			ball.vx = (ball.vx+_gravity)*_friction;
-			new_center.x = (int) (current_center.x  + ball.vx);
-			
-			if (new_center.x<left_edge) 
-			{
-				// Left Edge
-				Log.d(TAG,"L :"+ball.vx);
-				ball.vx *= -_reflection;
-				if(Math.abs(ball.vx)<1) 
-				{
-//					Log.d(TAG,"v=0");
-					ball.vx = 0;
-				}
-				
-				
-				new_center.x = left_edge;
-				Log.d(TAG,"L>:"+ball.vx);
-			}
-		}
-		
-		ball.setPosition(new_center);
-	}
-	/*
-	private void calculate()
-	{
-//		Log.d(TAG,"G:R:F "+_gravity+":"+_reflection+":"+_friction);
-		int right_edge = getWidth()-ball.getDiameter()/2;
-		int left_edge = ball.getDiameter()/2;
-		Point current_center = ball.getPosition();
-		Point new_center = new Point(0,ball.start_point.y);	// y‚ÍŒÅ’è
-		
-//		ball.vx = ball.vx*_friction+_gravity;
 		ball.vx = (ball.vx+_gravity)*_friction;
 		
 		new_center.x = (int) (current_center.x  + ball.vx);
-//		Log.d(TAG,"x:"+current_center.x+"+"+ball.vx+"="+new_center.x);
-		
+		if(0<=_gravity) new_center.x++;	// MEMO y’ˆÓz‚±‚ê‚ª‚È‚¢‚Æ‰E‚Éd—Í‚Ì‚Æ‚«‚É”½”­ŒW”‚ª‚PˆÈã‚Á‚Û‚¢“®‚«‚É‚È‚Á‚Ä‚µ‚Ü‚¤I
 		
 		if (new_center.x<left_edge) 
 		{
 			// Left Edge
-			Log.d(TAG,"L :"+ball.vx);
 			ball.vx *= -_reflection;
-			if(Math.abs(ball.vx)<1) 
-			{
-				Log.d(TAG,"v=0");
-				ball.vx = 0;
-			}
-			
-			
+			if(Math.abs(ball.vx)<1) ball.vx = 0;
 			new_center.x = left_edge;
-//			new_center.x = left_edge+(left_edge-new_center.x);	// TODO ‚Ù‚ñ‚Æ‚Í‚±‚Á‚¿‚ª³‚µ‚¢‚©‚à
-			Log.d(TAG,"L>:"+ball.vx);
 		}
 		else if (right_edge<new_center.x) 
 		{
 			// Right Edge
-			Log.d(TAG,"R :"+ball.vx);
-			ball.vx *= -_reflection;
-			if(Math.abs(ball.vx)<1)
-			{
-				Log.d(TAG,"v=0");
-				ball.vx = 0;
-			}
-			
-			new_center.x = right_edge;
-//			new_center.x = right_edge-(new_center.x-right_edge);	// TODO ‚Ù‚ñ‚Æ‚Í‚±‚Á‚¿‚ª³‚µ‚¢‚©‚à
-			Log.d(TAG,"R>:"+ball.vx);
-		}
-		else
-		{
-			if(ball.vx!=0) Log.d(TAG," :"+ball.vx);
-		}
-		
-		ball.setPosition(new_center);
-	}
-	*/
-	/*
-	private void calculate()
-	{
-		Point current_center = ball.getPosition();
-		Point new_center = new Point(0,ball.start_point.y);	// y‚ÍŒÅ’è
-		
-		ball.vx *= _friction;
-		ball.vx += _gravity;
-		
-		new_center.x = (int) (current_center.x  + ball.vx);
-		
-		
-		int right_edge = getWidth()-ball.getDiameter()/2;
-		int left_edge = ball.getDiameter()/2;
-		if (right_edge<new_center.x) 
-		{
-			// Right Edge
-			ball.vx *= -_reflection;
-			float diff = Math.abs(last_edge_v-Math.abs(ball.vx));
-//			Log.d(TAG,"diff:"+diff);
-			if(Math.abs(ball.vx)<1 && diff<0.002)
-			{
-				if(ball.vx!=0)
-				{
-//					Log.d(TAG,"---------");
-					ball.vx = 0;
-				}
-			}
-			
-			new_center.x = right_edge;
-			Log.d(TAG,"R:"+ball.vx);
-			last_edge_v = Math.abs(ball.vx);
-		}
-		else if (new_center.x<left_edge) 
-		{
-			// Left Edge
 			ball.vx *= -_reflection;
 			if(Math.abs(ball.vx)<1) ball.vx = 0;
-			
-			new_center.x = left_edge;
-			Log.d(TAG,"L:"+ball.vx);
+			new_center.x = right_edge;
 		}
-		else
-		{
-			if(ball.vx!=0) Log.d(TAG," :"+ball.vx);
-		}
-		
-		//@TODO ‘¬“x‚Éˆê’èˆÈã•Ï‰»‚ª‚È‚©‚Á‚½‚ç’âŽ~
 		
 		ball.setPosition(new_center);
 	}
-	*/
+	
 	@Override
     public boolean onTouchEvent(MotionEvent event) 
 	{
