@@ -8,8 +8,8 @@
     </style>
     <style name="MiniButton" parent="@android:style/Widget.ImageButton">
         <item name="android:gravity">center</item>
-        <item name="android:width">20px</item>
-        <item name="android:height">20px</item>
+        <item name="android:width">24px</item>
+        <item name="android:height">24px</item>
         <item name="android:background">@drawable/minibtn</item>
     </style>
     <style name="NumPickerButton" parent="@android:style/Widget.Button">
@@ -30,7 +30,7 @@
     </style>
     <style name="MySeekBar" parent="android:Widget.SeekBar">
 		<item name="android:gravity">center_vertical</item>
-		<item name="android:layout_height">10px</item>
+		<item name="android:layout_height">15px</item>
 		<item name="android:thumb">@drawable/seekbar_thumb</item>
 		<item name="android:progressDrawable">@drawable/seekbar</item>
 	</style>

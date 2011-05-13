@@ -89,19 +89,14 @@ public class AnimLayout extends net.karappo.android.osc.view.unit.AnimLayout
 		switch (action & MotionEvent.ACTION_MASK) 
 	    {
 	    case MotionEvent.ACTION_DOWN:
-	    	Log.d(TAG,"ACTION_DOWN");
 	    case MotionEvent.ACTION_POINTER_DOWN:
 	    	touching = true;
 	    	ball.vx = 0;
-	    	Log.d(TAG,"ACTION_POINTER_DOWN");
 	    	break;
 	    case MotionEvent.ACTION_MOVE:
-	    	Log.d(TAG,"ACTION_MOVE");
 	    	break;
 	    case MotionEvent.ACTION_UP:
-	    	Log.d(TAG,"ACTION_UP");
 	    case MotionEvent.ACTION_POINTER_UP:
-	    	Log.d(TAG,"ACTION_POINTER_UP");
 	    	touching = false;
 			break;
 	    }

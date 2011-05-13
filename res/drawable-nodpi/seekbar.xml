@@ -2,10 +2,7 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android"> 
   
   <item android:id="@android:id/background"> 
-    <shape> 
-	    <size
-	        android:height="50px" />
-        
+    <shape>
 		<corners android:radius="6px" />
 	    <gradient 
 	        android:startColor="#333333" 
