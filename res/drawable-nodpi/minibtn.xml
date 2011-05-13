@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+	<!-- 通常 -->
+	<item
+		android:state_enabled="true"
+		android:state_window_focused="false"
+		android:drawable="@drawable/minibtn_normal" />
+	<!-- 無効 -->
+	<item
+		android:state_enabled="false"
+		android:state_window_focused="false"
+		android:drawable="@drawable/minibtn_disabled" />
+	<!-- 押下 -->
+	<item
+		android:state_pressed="true"
+		android:drawable="@drawable/minibtn_pressed" />
+	<!-- フォーカス -->
+	<!-- 
+	<item
+		android:state_focused="true"
+		android:state_enabled="true"
+		android:drawable="@drawable/minibtn_focused" />
+	-->
+	<!-- 通常 -->
+	<item
+		android:state_enabled="true"
+		android:drawable="@drawable/minibtn_normal" />
+	<!-- 無効、フォーカス -->
+	<!-- 
+	<item
+		android:state_focused="true"
+		android:drawable="@drawable/minibtn_disable_focused" />
+	 -->
+</selector>

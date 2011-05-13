@@ -18,7 +18,8 @@ public abstract class Unit extends LinearLayout
 	protected TextView idTV;
 	protected ToggleButton enableBtn;
 	protected Button settingBtn;
-	protected TableLayout settingPanel;
+	protected LinearLayout settingPanel;
+	
 	
 	public Unit(Context context) 
 	{

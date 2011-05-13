@@ -1,9 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="CircleButton" parent="@android:style/Widget.ImageButton">
-        <item name="android:gravity">center_vertical|center_horizontal</item>
+    <style name="OvalButton" parent="@android:style/Widget.ImageButton">
+        <item name="android:gravity">center</item>
         <item name="android:width">50px</item>
         <item name="android:height">50px</item>
-        <item name="android:background">@drawable/ovalbtn_bg</item>
+        <item name="android:background">@drawable/ovalbtn</item>
     </style>
+    <style name="MiniButton" parent="@android:style/Widget.ImageButton">
+        <item name="android:gravity">center</item>
+        <item name="android:width">20px</item>
+        <item name="android:height">20px</item>
+        <item name="android:background">@drawable/minibtn</item>
+    </style>
+    <style name="NumPickerButton" parent="@android:style/Widget.Button">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">20px</item>
+        <item name="android:gravity">center</item>
+        <item name="android:width">50px</item>
+        <item name="android:height">50px</item>
+        <item name="android:background">@drawable/numpicker_btn</item>
+    </style>
+    <style name="MyButton" parent="@android:style/Widget.Button">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">20px</item>
+        <item name="android:gravity">center</item>
+        <item name="android:width">50px</item>
+        <item name="android:height">50px</item>
+        <item name="android:background">@drawable/btn</item>
+    </style>
+    <style name="MySeekBar" parent="android:Widget.SeekBar">
+		<item name="android:gravity">center_vertical</item>
+		<item name="android:layout_height">10px</item>
+		<item name="android:thumb">@drawable/seekbar_thumb</item>
+		<item name="android:progressDrawable">@drawable/seekbar</item>
+	</style>
 </resources>

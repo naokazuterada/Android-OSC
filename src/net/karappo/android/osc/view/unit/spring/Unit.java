@@ -60,7 +60,7 @@ public class Unit extends net.karappo.android.osc.view.unit.Unit
 		
 		enableBtn = (ToggleButton) v.findViewById(R.id.enableBtn);
 		
-		settingPanel = (TableLayout) v.findViewById(R.id.settingPanel);
+		settingPanel = (LinearLayout) v.findViewById(R.id.settingPanel);
 		settingPanel.setVisibility(View.GONE);
 		settingBtn = (Button) v.findViewById(R.id.settingBtn);
 		settingBtn.setOnClickListener(new OnClickListener()

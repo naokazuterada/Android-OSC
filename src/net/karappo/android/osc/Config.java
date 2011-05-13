@@ -1,5 +1,6 @@
 package net.karappo.android.osc;
 
+import net.karappo.android.numpicker.NumberPicker;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,11 +16,11 @@ public class Config extends Activity implements OnClickListener
 	final private boolean D = true;
 	 	
 	// views
- 	private EditText ET_hostip_1;
- 	private EditText ET_hostip_2;
- 	private EditText ET_hostip_3;
- 	private EditText ET_hostip_4;
-	private EditText ET_hostport;
+ 	private NumberPicker NP_hostip_1;
+ 	private NumberPicker NP_hostip_2;
+ 	private NumberPicker NP_hostip_3;
+ 	private NumberPicker NP_hostip_4;
+	private NumberPicker NP_hostport;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState)
@@ -31,18 +32,18 @@ public class Config extends Activity implements OnClickListener
 		Intent i = getIntent();
 		Host host = (Host) i.getSerializableExtra(Main.HOST_DATA);
 
-		ET_hostip_1 = (EditText) findViewById(R.id.host_ip_1);
-		ET_hostip_2 = (EditText) findViewById(R.id.host_ip_2);
-		ET_hostip_3 = (EditText) findViewById(R.id.host_ip_3);
-		ET_hostip_4 = (EditText) findViewById(R.id.host_ip_4);
-		ET_hostport = (EditText) findViewById(R.id.host_port);
+		NP_hostip_1 = (NumberPicker) findViewById(R.id.host_ip_1);
+		NP_hostip_2 = (NumberPicker) findViewById(R.id.host_ip_2);
+		NP_hostip_3 = (NumberPicker) findViewById(R.id.host_ip_3);
+		NP_hostip_4 = (NumberPicker) findViewById(R.id.host_ip_4);
+		NP_hostport = (NumberPicker) findViewById(R.id.host_port);
 		
-		ET_hostip_1.setText(host.ip_1+"");
-		ET_hostip_2.setText(host.ip_2+"");
-		ET_hostip_3.setText(host.ip_3+"");
-		ET_hostip_4.setText(host.ip_4+"");
-		ET_hostport.setText(host.port+"");
-		
+		NP_hostip_1.setCurrent(host.ip_1);
+		NP_hostip_2.setCurrent(host.ip_2);
+		NP_hostip_3.setCurrent(host.ip_3);
+		NP_hostip_4.setCurrent(host.ip_4);
+		NP_hostport.setCurrent(host.port);
+	
 		// add button listeners
 		((Button) findViewById(R.id.connect_btn)).setOnClickListener(this);
 		((Button) findViewById(R.id.cancel_btn)).setOnClickListener(this);
@@ -53,11 +54,11 @@ public class Config extends Activity implements OnClickListener
 	{
 		switch (v.getId()) {
 		case R.id.connect_btn:
-			int host_ip_1 = Integer.parseInt(ET_hostip_1.getText().toString());
-			int host_ip_2 = Integer.parseInt(ET_hostip_2.getText().toString());
-			int host_ip_3 = Integer.parseInt(ET_hostip_3.getText().toString());
-			int host_ip_4 = Integer.parseInt(ET_hostip_4.getText().toString());
-			int host_port = Integer.parseInt(ET_hostport.getText().toString());
+			int host_ip_1 = NP_hostip_1.getCurrent();
+			int host_ip_2 = NP_hostip_2.getCurrent();
+			int host_ip_3 = NP_hostip_3.getCurrent();
+			int host_ip_4 = NP_hostip_4.getCurrent();
+			int host_port = NP_hostport.getCurrent();
 			Host host = new Host(host_ip_1, host_ip_2, host_ip_3, host_ip_4, host_port);
 			Intent i = new Intent();
 			i.putExtra(Main.HOST_DATA, host);

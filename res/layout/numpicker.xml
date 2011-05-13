@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_height="wrap_content" android:orientation="vertical" xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent">
+
+    <net.karappo.android.numpicker.NumberPickerButton 
+    	android:id="@+id/increment"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" 
+        android:text="+" style="@style/NumPickerButton"/>
+        
+    <TextView 
+    	android:id="@+id/display" 
+    	android:layout_height="40px" 
+    	android:gravity="center" 
+    	android:text="255" 
+    	android:textSize="20px" 
+    	android:padding="10px" 
+    	android:layout_width="match_parent" />
+
+    <net.karappo.android.numpicker.NumberPickerButton 
+    	android:id="@+id/decrement"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" 
+        android:text="-" style="@style/NumPickerButton"/>
+        
+</LinearLayout>

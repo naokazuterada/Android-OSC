@@ -7,4 +7,8 @@
 		<attr name="ballFillColor" format="color" />
 		<attr name="ballLineColor" format="color" />
 	</declare-styleable>
+	<declare-styleable name="NumberPicker">
+		<attr name="min" format="integer" />
+		<attr name="max" format="integer" />
+	</declare-styleable>
 </resources>
